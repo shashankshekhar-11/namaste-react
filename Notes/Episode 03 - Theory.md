@@ -79,3 +79,17 @@ A: The Difference is stated below:
 ```
 <TitleComponent />
 ```
+
+//React.createElement() => React Element - JS Object => HTMLElements(render)
+
+// const heading = React.createElement(
+//     "h1",
+//     {id:"heading"},
+//     "Namaste React"
+// );
+
+// JSX- HTML like or XML-like JSX
+
+// JSX(transpiled before it reaches JS engine) - PARCEL -Babel
+
+// JSX => babel transpiles it React.createelement
