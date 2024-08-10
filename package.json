@@ -8,7 +8,6 @@
     "build": "parcel build index.html",
     "test": "jest"
   },
- 
   "repository": {
     "type": "git",
     "url": "(https://github.com/shashankshekhar-11/namaste-react)"
@@ -25,9 +24,10 @@
   },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0"
   },
-  "browserslist":[
+  "browserslist": [
     "last 2 versions"
   ]
 }
