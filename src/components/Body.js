@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import RestaurantCard from './RestaurantCard';
 import Shimmer from './Shimmer';
-
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import useOnlineStatus from '../utils/useOnlineStatus';
 const Body = () => {
   // * React Hook -> A normal JavaScript function which is given to us by React (or) Normal JS utility functions
   // * useState() - Super Powerful variable
-  // * useEffect() -
+  // * useEffect() -  
 
   // * State Variable - Super Powerful variable
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -14,7 +16,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState('');
 
   // * Whenever a state variable updates or changes, react triggers a reconciliation cycle(re-renders the component)
-  console.log('Body rendered');
+  //console.log('Body rendered');
 
   useEffect(() => {
     fetchData();
@@ -22,7 +24,7 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.624480699999999&page_type=DESKTOP_WEB_LISTING'
+      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
     );
 
     const json = await data.json();
@@ -38,6 +40,11 @@ const Body = () => {
   // if (listOfRestaurants.length === 0) {
   //   return <Shimmer />;
   // }
+
+const onlineStatus = useOnlineStatus();
+if(onlineStatus ===false){
+  return <div> No Internet Connection</div>;
+};
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
@@ -74,6 +81,7 @@ const Body = () => {
             Search
           </button>
         </div>
+        
         <button
           className="filter-btn"
           onClick={() => {
@@ -94,7 +102,7 @@ const Body = () => {
         {/* // * looping through the <RestaurentCard /> components Using Array.map() method */}
 
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <RestaurantCard  key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
     </div>
