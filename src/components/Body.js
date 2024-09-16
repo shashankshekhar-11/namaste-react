@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import RestaurantCard from './RestaurantCard';
+import RestaurantCard ,{withPromotedLabel} from './RestaurantCard';
 import Shimmer from './Shimmer';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -13,6 +13,8 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
   const [searchText, setSearchText] = useState('');
 
   // * Whenever a state variable updates or changes, react triggers a reconciliation cycle(re-renders the component)
@@ -23,7 +25,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
+        const data = await fetch(
       'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
     );
 
@@ -94,7 +96,7 @@ if(onlineStatus ===false){
 
             //setListOfRestaurants(filteredList);
             setFilteredRestaurant(filteredList);
-            console.log(filteredList);
+            console.log("filteredList",filteredList);
           }}
         >
           Top Rated Restaurants
@@ -105,7 +107,21 @@ if(onlineStatus ===false){
         {/* // * looping through the <RestaurentCard /> components Using Array.map() method */}
 
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantCard  key={restaurant.info.id} resData={restaurant} />
+          <Link
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+            }}
+            key={restaurant.info.id}
+            to={'/restaurants/' + restaurant.info.id}
+          >
+            {restaurant.info.promoted? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
+            </Link>
+          
         ))}
       </div>
     </div>
