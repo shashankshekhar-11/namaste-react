@@ -30,6 +30,8 @@ const RestaurantMenu = () => {
         
     // };
 
+const [showIndex,setShowIndex] = useState(null);
+
      if(resInfo === null) return <Shimmer />;
 
     const {name,cuisines,costForTwoMessage} =resInfo?.cards[2]?.card?.card?.info;
@@ -50,8 +52,14 @@ const RestaurantMenu = () => {
         <p className="text-lg font-bold">{cuisines.join(",")} - {costForTwoMessage}</p>
         <p>
             {/*aCCORDIAN CATEGORIES */}
-            {categories.map((category) =>(
-                    <RestaurantCategory data={category?.card?.card}/>
+            {categories.map((category,index)  =>(
+                    //controlled components
+                    <RestaurantCategory 
+                    key={category?.card?.card.title}
+                    data={category?.card?.card} 
+                    showItems ={index === showIndex }
+                    setShowIndex={() => setShowIndex(index === showIndex ? null : index)}
+                    />
                     
             ))}
         </p>
