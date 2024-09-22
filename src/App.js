@@ -1,4 +1,4 @@
-import React, { Children, lazy,Suspense } from 'react';
+import React, { Children, lazy,Suspense, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter , Outlet, RouterProvider } from 'react-router-dom';
 
@@ -8,7 +8,8 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
-//import Grocery from './components/Grocery';
+import Grocery from './components/Grocery';
+import UserContext from './utils/UserContext';
 /* Components of Our Food-Order App
  * Header
  * - Logo
@@ -50,12 +51,26 @@ const Grocery = lazy(() => import('./components/Grocery'));
 
 const AppLayout = () => {
   // console.log(<Body />);
+  const[userName,setUserName] = useState();
+//authentication
+useEffect(() =>{
+
+//APi call to send username and password
+const data = {
+    name :"Shashank"
+  };
+
+  setUserName(data.name);
+} ,[]);
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet/>
-      <Footer />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
+    
   );
 };
 
