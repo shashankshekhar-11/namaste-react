@@ -21,3 +21,12 @@ Repo for learning React
 -Error handling
 -HTPPs-
 -Tree Shaking - remobe umused code
+
+#Redux Toolkit
+-Redux Toolkit is a set of tools for working with Redux
+-Install @reduxjs/toolkit and react-redux
+-Build our store
+-connect our store to app
+-create cart slice
+-dispatch action 
+-selector 
