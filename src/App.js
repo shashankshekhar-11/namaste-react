@@ -8,7 +8,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
-import Grocery from './components/Grocery';
+//import Grocery from './components/Grocery';
 import UserContext from './utils/UserContext';
 import appStore from './utils/appStore';
 import Cart from './components/Cart';
@@ -44,9 +44,10 @@ const Footer = () => {
         Copyright &copy; {currYear}, Made with 💗 by <strong>Shashank</strong>
       </p>
     </footer>
-  );
+  )
 };
-//lazy loading,chunking,on demand loading,code splitting,synamic import
+
+
 
 const Grocery = lazy(() => import('./components/Grocery'));
 
