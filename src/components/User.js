@@ -12,11 +12,9 @@ const User = ({ name }) => {
 
   return (
     <div className="user-card">
-      <h1>Count: {count}</h1>
-      <h1>Count2: {count2}</h1>
       <h2>Name: {name}</h2>
-      <h3>Location: Badvel</h3>
-      <h4>Contact: @vaasuk24</h4>
+      <h3>Location: Sangrur</h3>
+      <h4>Contact: @Shashank@11</h4>
     </div>
   );
 };
