@@ -30,3 +30,8 @@ Repo for learning React
 -create cart slice
 -dispatch action 
 -selector 
+
+#Types of testing
+-Unit Testing
+-Integration Testing
+-End to End Testing

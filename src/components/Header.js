@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import UserContext from '../utils/UserContext';
 import { useSelector } from 'react-redux';
-
+//import logo from './assets/logo.png';
 
 const Header = () => {
   //   let btnName = 'Login';
